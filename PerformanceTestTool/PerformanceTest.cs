@@ -27,6 +27,10 @@ namespace PerformanceTestTool
         /// <param name="action">测试方法</param>
         public static void Time(string name, int threads, int iteration, Action action)
         {
+            //在单一线程下测试一下方法是否有问题
+            action();
+            Thread.Sleep(1);
+            //
             WorkerStat[] statArray = new WorkerStat[threads];
             Task[] taskArray=new Task[threads];
             WorkerStat mainStat = new WorkerStat {RunCount = threads*iteration};
