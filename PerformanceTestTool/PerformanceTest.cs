@@ -78,8 +78,8 @@ namespace PerformanceTestTool
             Display(StringPadLeft("Total Thread") + StringPadLeft("Total Count") + StringPadLeft("Total Time(ms)") +
                     StringPadLeft("TPS"));
             Console.ForegroundColor = ConsoleColor.Red;
-            Display(StringPadLeft(threads) + StringPadLeft(totalStat.RunCount) + StringPadLeft(totalStat.Timespan/threads) +
-                    StringPadLeft(Math.Round(1000 * (totalStat.RunCount*threads/(double) totalStat.Timespan))));
+            Display(StringPadLeft(threads) + StringPadLeft(mainStat.RunCount) + StringPadLeft(mainStat.Timespan) +
+                    StringPadLeft(Math.Round(1000 * (mainStat.RunCount / (double)mainStat.Timespan))));
             Console.ForegroundColor = ConsoleColor.White;
             Display("Detail Info：");
             Display("--------------Total WorkerStat");

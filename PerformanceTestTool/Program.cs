@@ -20,7 +20,7 @@ namespace PerformanceTestTool
         {
             ClientInit();
             PerformanceTest.Initialize();
-            PerformanceTest.Time("name-1", 5, 1000, (Run));
+            PerformanceTest.Time("name-1", 10, 5000, (Run));
             PerformanceTest.Time("name-1",2,100,(() => { int a = 1; Thread.Sleep(5); }));
             PerformanceTest.Time("name-2", 2, 100, (() => { int a = 1; Thread.Sleep(5); }));
             PerformanceTest.Time("name-3", 2, 100, (() => { int a = 1; Thread.Sleep(5); }));
@@ -33,7 +33,8 @@ namespace PerformanceTestTool
             //用取余的方试，平均分布到各个客户端
             var clientNum = current%ClientCount;
             //
-            var webClient = WebClients[clientNum];
+            //var webClient = WebClients[clientNum];
+            var webClient = new WebClient();
             webClient.DownloadString("http://localhost:1337/");
             //
             if (current%ClientCount == 0)
